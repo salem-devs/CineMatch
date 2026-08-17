@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CinéMatch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="header">
+
+        <h1>CinéMatch</h1>
+
+        <div class="search-container">
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Rechercher un film..."
+            >
+        </div>
+
+        <button id="favoritesBtn">
+            ♥ Favoris
+        </button>
+
+    </header>
+
+    <main>
+
+        <section class="hero">
+            <span>BIENVENUE SUR</span>
+            <h2>CINÉMATCH</h2>
+            <p>
+                Découvrez les films populaires et trouvez votre prochain film.
+            </p>
+        </section>
+
+        <section class="movies-section">
+
+            <div id="loader" class="loader">
+                Chargement des films...
+            </div>
+
+            <div id="errorMessage" class="error-message"></div>
+
+            <div id="moviesContainer" class="movies-grid">
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Modale -->
+    <div id="movieModal" class="modal">
+
+        <div class="modal-content">
+
+            <button id="closeModalBtn" class="close-modal">
+                ✕
+            </button>
+
+            <div id="modalContent">
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
