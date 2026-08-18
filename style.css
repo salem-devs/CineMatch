@@ -236,6 +236,61 @@ main {
     color: red;
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+
+    padding: 30px;
+    background: #f7f4ef;
+    border-radius: 12px;
+}
+
+.modal-content img {
+    width: 180px;
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 8px;
+}
+
+.modal-content h2 {
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 /* RESPONSIVE */
 
 @media (max-width: 700px) {

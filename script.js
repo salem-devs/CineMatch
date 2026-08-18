@@ -4,6 +4,9 @@
     const loader = document.getElementById("loader");
     const errorMessage = document.getElementById("errorMessage");
     const searchInput = document.getElementById("searchInput");
+    const movieModal = document.getElementById("movieModal");
+    const closeModalBtn = document.getElementById("closeModalBtn");
+    const modalContent = document.getElementById("modalContent");
     
     let movies = [];
    async function getPopularMovies() {
@@ -69,6 +72,49 @@
             `;
 
             moviesContainer.appendChild(movieCard);
+            movieCard.addEventListener("click", () => {
+             displayMovieDetails(movie);
+});
+
+    function displayMovieDetails(movie) {
+
+    modalContent.innerHTML = `
+        <img 
+            src="https://image.tmdb.org/t/p/w500${movie.poster_path}" 
+            alt="${movie.title}"
+        >
+
+        <h2>${movie.title}</h2>
+
+        <p>
+            <strong>Date de sortie :</strong>
+            ${movie.release_date}
+        </p>
+
+        <p>
+            <strong>Note :</strong>
+            ${movie.vote_average.toFixed(1)}
+        </p>
+
+        <p>
+            ${movie.overview || "Aucun synopsis disponible."}
+        </p>
+    `;
+
+    movieModal.style.display = "flex";
+}
+
+    closeModalBtn.addEventListener("click", () => {
+        movieModal.style.display = "none";
+    });
+
+    movieModal.addEventListener("click", (event) => {
+
+    if (event.target === movieModal) {
+        movieModal.style.display = "none";
+    }
+
+});
         });
     }
 
