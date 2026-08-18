@@ -1,31 +1,44 @@
     const apiKey = "840304608d90b96564a264a491917970";
     const apiUrl = "https://api.themoviedb.org/3";
     const moviesContainer = document.getElementById("moviesContainer");
+    const loader = document.getElementById("loader");
+    const errorMessage = document.getElementById("errorMessage");
 
     let movies = [];
-    async function getPopularMovies() {
+   async function getPopularMovies() {
 
-        try {
+    try {
 
-            const response = await fetch(
-                `${apiUrl}/movie/popular?api_key=${apiKey}&language=fr-FR`
-            );
+        loader.style.display = "block";
+        errorMessage.textContent = "";
 
-            if (!response.ok) {
-                throw new Error("Erreur lors de la récupération des films");
-            }
+        const response = await fetch(
+            `${apiUrl}/movie/popular?api_key=${apiKey}&language=fr-FR`
+        );
 
-            const data = await response.json();
-
-            movies = data.results;
-
-            displayMovies(movies);
-        } catch (error) {
-
-            console.error(error);
-
+        if (!response.ok) {
+            throw new Error("Erreur lors de la récupération des films");
         }
+
+        const data = await response.json();
+
+        movies = data.results;
+
+        displayMovies(movies);
+
+    } catch (error) {
+
+        console.error(error);
+
+        errorMessage.textContent =
+            "Impossible de charger les films.";
+
+    } finally {
+
+        loader.style.display = "none";
+
     }
+}
 
     getPopularMovies();
 
