@@ -7,7 +7,7 @@
 body {
     font-family: Arial, sans-serif;
     /* background: #ebe3da; */
-    background: #939392;
+    background: #766b6b;
     color: #1f2937;
 }
 
@@ -220,6 +220,20 @@ main {
     text-align: center;
     color: #dc2626;
     margin-bottom: 20px;
+}
+
+/*** RATING ***/
+
+.rating-good {
+    color: green;
+}
+
+.rating-average {
+    color: orange;
+}
+
+.rating-bad {
+    color: red;
 }
 
 /* RESPONSIVE */

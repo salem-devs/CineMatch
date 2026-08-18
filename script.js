@@ -63,12 +63,27 @@
 
                 <p>${movie.release_date}</p>
 
-                <strong>${movie.vote_average.toFixed(1)}</strong>
+                <strong class="${getRatingClass(movie.vote_average)}">
+                    ${movie.vote_average.toFixed(1)}
+                </strong>
             `;
 
             moviesContainer.appendChild(movieCard);
         });
     }
+
+    function getRatingClass(rating) {
+
+    if (rating > 7) {
+        return "rating-good";
+    }
+
+    if (rating >= 5) {
+        return "rating-average";
+    }
+
+    return "rating-bad";
+}
 
     searchInput.addEventListener("input", () => {
 
