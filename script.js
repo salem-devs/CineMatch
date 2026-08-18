@@ -3,7 +3,8 @@
     const moviesContainer = document.getElementById("moviesContainer");
     const loader = document.getElementById("loader");
     const errorMessage = document.getElementById("errorMessage");
-
+    const searchInput = document.getElementById("searchInput");
+    
     let movies = [];
    async function getPopularMovies() {
 
@@ -68,3 +69,48 @@
             moviesContainer.appendChild(movieCard);
         });
     }
+
+    searchInput.addEventListener("input", () => {
+
+    const searchText = searchInput.value.trim();
+
+    if (searchText === "") {
+        displayMovies(movies);
+        return;
+    }
+
+    searchMovies(searchText);
+});
+
+async function searchMovies(query) {
+
+    try {
+
+        loader.style.display = "block";
+        errorMessage.textContent = "";
+
+        const response = await fetch(
+            `${apiUrl}/search/movie?api_key=${apiKey}&language=fr-FR&query=${encodeURIComponent(query)}`
+        );
+
+        if (!response.ok) {
+            throw new Error("Erreur lors de la recherche");
+        }
+
+        const data = await response.json();
+
+        displayMovies(data.results);
+
+    } catch (error) {
+
+        console.error(error);
+
+        errorMessage.textContent =
+            "Impossible de rechercher les films.";
+
+    } finally {
+
+        loader.style.display = "none";
+
+    }
+}
