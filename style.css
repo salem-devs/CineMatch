@@ -253,10 +253,11 @@ main {
     max-height: 90vh;
     overflow-y: auto;
     padding: 30px;
-    background: #f7f4ef;
+    background: #cd4363;
     /* background-color: transparent; */
     border-radius: 35px 0 35px 0;
     scrollbar-width: none;
+    color: #ebe3da;
 
 }
 
